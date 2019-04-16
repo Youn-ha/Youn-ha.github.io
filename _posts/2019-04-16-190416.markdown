@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "How do I change a default shell from bash to zsh? ➊"
+date:   2019-04-16
+categories: jekyll
+---
+
+
+과정이 순탄하지는 않았지만, 성공적으로 `zsh` 을 설치하고 다른 프로그램과 플러그인도 잘 설치된 듯 했다. 설치되었다는 메세지들이 떴다! 물론, 겉보기에만 말이다. `zsh` 플러그인을 `.zshrc`  에 설치했지만, 그 어떤 플러그인도 작동하지 않았다.
+
+
+<img src="/img/190416/conda.png" width="250px">
+
+
+<p style="color: red"> 아아악 </p>
+
+
+게다가, `.zshrc`에서 miniconda 프로그램의 `path` 를 설정해줬는데, `echo $PATH`를 해보니 miniconda 의 path 가 두 번이나 뜨는 것이다. 아래 사진처럼, `.zshrc` 내부의 path 에서 miniconda의 path 를 주석처리 해주어도, miniconda 의 path 가 사라지지 않는다. 이건 분명 bash에서 중복적으로 path 를 설정해준 것임에 틀림없다!!!
+
+
+bash를 찾으러 가야겠다.
+
+`tldr`로 `find` command 를 어떻게 사용하는지 알아보았다.
+
+<img src="/img/190416/find.png" width="500px">
+
+`find` command 를 사용해 `bash`가 들어가는 파일을 모두 찾아보도록 하자.
+
+```
+find ~ -name '*bash*'
+```
+
+<img src="/img/190416/find_2.png" width="750px">
+
+
+`.bash_profile`과 `.bash_history` 파일이 있다. 이 중 `.bash_profile`을 열어보았다.
+
+
+<img src="/img/190416/hereitis.png" width="500px">
+
+
+<p style= "color: grey"> 여기 있었네~...... </p>
+
+
+`zsh` 화면과 `bash` 화면도 구분 못 하는 코딩 생초짜인 나는, 여태 내가 `bash` 쉘을 사용하고 있다는 사실을 몰랐다. 내 terminal 창 상단을 보고 나서야 내 terminal이 `zsh` 이 아닌 `bash` 를 실행중이라는 것을 알았다. 그리고 드디어... 내 소중한 프로그램들과 플러그인들이 실행되지 않았던 이유가 zsh과는 전혀 다른 shell을 실행중이기 때문이라는 사실을 알았다.
+
+<img src="/img/190416/now_zsh.png" width="200px">
+
+
+지금은 `zsh`이 정상적으로 작동 중이기 때문에 `zsh`이 뜨지만, 아까는 `bash`로 떴다.
+
+보통은 `zsh`을 깔면 자동으로 `zsh`이 default shell 이 된다고 한다. 나는 왜 그대로 `bash`인 걸까? default shell 을 바꿔주어야 한다.
+
+# ***Then, how do I change a default shell from bash to zsh?***
+
+
+
+<p style= "color: grey"> 다음 편에서 계속... </p>
+
+
