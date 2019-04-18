@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "How do I change a default shell from bash to zsh? ➊"
-date:   2019-04-16
+title:  "How to edit a read-only file in Linux"
+date:   2019-04-18
 categories: jekyll
 ---
 
