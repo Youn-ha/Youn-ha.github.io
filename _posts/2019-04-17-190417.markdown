@@ -34,7 +34,7 @@ sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zs
 * `sudo` : '<span style="color: red">su</span>'peruser '<span style="color: red">do</span>' 라는 뜻이다. 관리자 권한으로 실행한다는 뜻이다. 읽기전용 파일 수정도`sudo`와 함께라면 가능하다!
 * `sh -c` : '<span style="color: red
 ">sh</span>'ell s'<span style="color: red">c</span>'ript. 이 다음으로 오는 코드를 shell 로 인식해 실행해달라는 뜻이다. command 뒤에 '-'와 함께 붙는 알파벳은, 이 command 의 option 이다! 구글에 검색해보니 flag 라고 부르더라... <span style="color: lightgrey">구글에서 데려온 영어 설명. `sh` calls the program `sh` as interpreter and the `-c` flag means execute the following command as interpreted by this program.</span> `sh -c` 가 왜 필요할까??? `sudo` 명령어 뒤에 만일 `sh -c` 가 없다고 가정해보자. 그럼 `sudo echo /usr/local/bin/zsh >> /etc/shells && ... ` 가 될 것이다. 이렇게 되면 `sudo` 가 실행하는 것이 기존에 따옴표 안에 있던 것 전부 (&& 이전까지) 가 아니라, `echo /usr/local/bin/zsh` 까지밖에 안 된다. 그냥 관리자 권한으로 `zsh` 경로를 `echo` 하고 끝나는 것이다.
-* `echo` : 파이썬의 `print`, javascript 의 `console.log`와 같은 기능을 하는 command 이다. bash나 C shells 에서 인자(argument)를  화면에 출력해주는 command 이다. 여기서 echo 가 왜 쓰였을까? 따옴표 안에 아무것도 없다면 컴퓨터는 `/user/local/bin/zsh`를 command 로 받아들일 것이다. 이건 실제로 zsh 프로그램이다. 그러니까 아마 컴퓨터는 zsh 을 실행할 것이다.
+* `echo` : 파이썬의 `print`, javascript 의 `console.log`와 같은 기능을 하는 command 이다. bash나 C shells 에서 인자(argument)를  화면에 출력해주는 command 이다. 여기서 echo 가 왜 쓰였을까? 따옴표 안에 `echo`가 없다면 컴퓨터는 `/user/local/bin/zsh`를 command 로 받아들일 것이다. 그런데 이 경로는 실제로 zsh 프로그램이다. 그러니까 아마 컴퓨터는 `zsh` 를 command 로 받아들이고 실행할 것이다.
 * `/user/local/bin/zsh` : 내 `zsh` 가 들어있는 경로이다.
 * `>>` : 좌측에 있는 경로를 오른쪽에 있는 파일에 append 해준다는 뜻이다. 왜 이렇게 해야 할까 싶어서 etc 에 있는 shell 파일을 열어보니, 읽기 전용으로 되어 있었다. 읽기 전용 파일에 강제로 쓰이게 하기 위해서 >> 를 쓴 걸까? 했는데 아니었다. 그건 `sudo`가 해주는 일이다....
 
