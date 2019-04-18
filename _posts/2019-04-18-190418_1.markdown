@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "How do I change a default shell from bash to zsh? ➊"
+date:   2019-04-16
+categories: jekyll
+---
+
+
+
