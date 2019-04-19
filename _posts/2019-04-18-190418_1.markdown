@@ -30,4 +30,4 @@ sudo vi /etc/shell
 자, 그러면 이제 읽기 전용 파일이었던 `/etc/shell` 이 편집 가능한 파일로 바뀌어 열렸다.
 
 <span style="color: red">여기서 미세팁!!!!!!!!!</span> 한 줄을 통째로 지우고 싶을 때, 그 줄에서 <span style="color: red">`dd`</span>를 치면 된다.
-손가락의 노동력을 줄여봅시다.
+손가락의 노동력을 줄여봅시다!
