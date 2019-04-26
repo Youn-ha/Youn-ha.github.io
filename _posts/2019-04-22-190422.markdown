@@ -13,13 +13,13 @@ categories: jekyll
 
 
 
-* `markup`은 특정 부분에 특정 심볼을 넣을 경우, 텍스트를 처리하는 파일<span style = "color:lightgrey">(text/word processing file)</span>이 해당 텍스트가 <span style = "color:red; font-weight:bold">어떻게 보여져야 하는지</span> 를 인지해, 그 모습대로 실행할 수 있도록 하는 어떤 약속을 하는 것이다! 쉽게 말해, 텍스트를 특정한 방식으로 꾸밀 때에 사용해야 하는 특정한 심볼들을 정한 약속이다. 텍스트에 marking up(표시)를 하는 것이다! 우리가 잘 아는, `tag`라고도 불리는 바로 그것이다!
-예를 들어, `HTML(Hypertext Markup Language)`은 '웹'의 스탠다드 `markup` 언어이다. 우리는 `HTML tag`를 이용해 텍스트를 보기 좋게 꾸며왔다.
+* `markup`은 특정 부분에 특정 심볼을 넣을 경우, 텍스트를 처리하는 파일<span style = "color:#adadad">(text/word processing file)</span>이 해당 텍스트가 <span style = "color:red; font-weight:bold">어떻게 보여져야 하는지</span> 를 인지해, 그 모습대로 실행할 수 있도록 하는 어떤 약속을 하는 것이다! 쉽게 말해, 텍스트를 특정한 방식으로 꾸밀 때에 사용해야 하는 특정한 심볼들을 정한 약속이다. 텍스트에 marking up(표시)를 하는 것이다! 우리가 잘 아는, `tag`라고도 불리는 바로 그것이다!
+예를 들어, `HTML`(Hypertext Markup Language)은 Web의 스탠다드 `markup` 언어이다. 우리는 `HTML tag`를 이용해 텍스트를 보기 좋게 꾸며왔다.
 
 
 <p style = "font-style:italic; font-size:`18px; color:#03a895; font-weight:bold"> 그렇다면 `markdown`은 무엇일까? 난 지금 `markdown`을 사용해 블로그 포스트를 꾸미고 있는데, 그럼 `markdown`이 `markup`의 하위 개념인건가??</p>
 
-* 음... 맞기도 하고 틀리기도 하다. `markdown`은 specific한 `markup` 언어이다. 다시 말해, `markdown`도 `markup` 언어 중 하나다! 하지만 하위 개념이라고 말하기엔 좀 애매한 부분이 있다. `markdown`은 웹 작성자를 위해, text를 `HTML`로 변환해주는 도구인데, `markdown`이라는 이름은 일종의 `markup`에 대한 <span style = "color:red; font-weight:bold">언어유희</span>로 지어진 것이다. 웹 작성자들에게 워낙 많이 쓰이니까, `markup`이 아닌 `markup`이라 부르자, 이렇게 장난스럽게 시작된 것인가 보다. 난 `markdown`이 일종의 `markup` 브랜드같은 것이라고 비유적으로 이해했다. 하위 <span style = "color:red; font-weight: bold">개념</span>이라기보다는 일종의 브랜드에 가깝다는 것이다. 하위 개념이 아니라 브랜드같은 거라는 표현이 잘 이해가 안 될 수 있는데, 하위 개념이라는 것은 약간, '고등학교'가 '학교'의 하위 개념인 것과 같다. 하지만 `markdown`은 그냥 잘 만들어진 `markup` language library 에 불과하기 때문에 '하위 개념이다' 라고 말하기엔 애매한 부분이 있다는 거였다. 굳이 예를 들자면 `markup` = 시계... `markdown` = Rolex... 이렇게 이해했다. 내가 맞게 이해한건가...?
+* 음... 맞기도 하고 틀리기도 하다. `markdown`은 specific한 `markup` 언어이다. 다시 말해, `markdown`도 `markup` 언어 중 하나다! 하지만 하위 개념이라고 말하기엔 좀 애매한 부분이 있다. `markdown`은 웹 작성자를 위해, text를 `HTML`로 변환해주는 도구인데, `markdown`이라는 이름은 일종의 `markup`에 대한 <span style = "color:red; font-weight:bold">언어유희</span>로 지어진 것이다. 웹 작성자들에게 워낙 많이 쓰이니까, `markup`이 아닌 `markdown`이라 부르자, 이렇게 장난스럽게 시작된 것인가 보다. 난 `markdown`이 일종의 `markup` 브랜드같은 것이라고 비유적으로 이해했다. 하위 <span style = "color:red; font-weight: bold">개념</span>이라기보다는 일종의 브랜드에 가깝다는 것이다. 하위 개념이 아니라 브랜드같은 거라는 표현이 잘 이해가 안 될 수 있는데, 하위 개념이라는 것은 약간, '고등학교'가 '학교'의 하위 개념인 것과 같다. 하지만 `markdown`은 그냥 잘 만들어진 `markup` language library 에 불과하기 때문에 '하위 개념이다' 라고 말하기엔 애매한 부분이 있다는 거였다. 굳이 예를 들자면 `markup` = 시계... `markdown` = Rolex... 이렇게 이해했다. 내가 맞게 이해한건가...?
 
 
 
