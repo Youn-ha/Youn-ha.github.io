@@ -9,4 +9,26 @@ categories: jekyll
 
 
 
-오늘은 파이썬의 네 가지 자료구조들에 대해 배웠다. 코딩을 배우면서 제일 처음 접한 언어가 파이썬인 사람들은 어떤지 모르겠다. 하지만 Javascript를 배우고 나서 Python을 배우기 시작했으며, 배우는 모든 개념들이 머릿속에서 Javascript 와 짬뽕되는 중인 <span style = "color: red; font-weight: bold">(Na...)</span>같은 사람들은 list 를 보며 어... 이거 array 아냐? 이러고 있는 것이다. 뭐 굳이 이것 아니어도... Javascript 에 가서 갑자기 띄어쓰기에 집착하고 있는 내 자신을 발견하거나...(이건 어쨌든 필요한 거다) Python에 가서 온갖 곳에 괄호를 쓰고 싶은 욕구가 솟구치거나... 나만 그런 건 아니겠지?
+오늘은 파이썬의 네 가지 자료구조(Data structures)들에 대해 배웠다.
+
+살면서 제일 처음으로 접한 프로그래밍 언어가 파이썬인 사람들은 어떤지 모르겠지만... Javascript를 배우고 나서 Python을 배우기 시작한, Python에서 배우는 개념들이 하나하나 머릿속에서 Javascript 와 짬뽕되는 중인 <span style = "color: lightgrey; font-weight: bold">(Na...)</span>같은 사람들은 Python의 `list` 를 보며 어... 이거 `array` 아냐? 이러고 있는 것이다. 워낙 둘이 개념이 비슷하니까. 뭐 굳이 이것 아니어도... Javascript 에 가서 갑자기 띄어쓰기에 집착하고 있는 내 자신을 발견하거나...(이건 어쨌든 필요한 거다) Python에 가서 온갖 곳에 괄호를 쓰고 싶은 욕구가 솟구치거나... 나만 그런 건 아니겠지??????
+
+아무튼 순전히 내가 헷갈려서 만든 표를 올린다. 파이썬 며칠 배웠다고 `object`가 입에 안 붙고 계속 `dictionary`라고 말하는 나같은 사람들을 위해.
+꼭 헷갈리는 사람이 아니어도, 파이썬에 존재하는 네 가지 자료구조의 차이점을 익힐 겸, javascript 자료구조와의 비교점도 짚고 넘어갈 겸.
+
+<img src = "/img/line.png" width="800px">
+
+
+<img src = "/img/190419/datastructure.png" width="800px">
+
+
+
+<img src = "/img/line.png" width="800px">
+
+
+또 한 가지 덧붙이자면, Data Structures 와 Data Types는 일반적으로 다른 것을 의미한다.
+검색을 하다가 Data Structures(Data Types)라고 설명해놓은 곳이 있어서 정리한다. 물론 병용하는 경우도 있기는 한데, '일반적으로는' 각각 다른 것을 의미한다. 따라서 Data Structures = Data Types 라고 납작하게 설명하기엔 무리가 있다!!!
+
+
+* <span style = "font-weight: bold">Data Types</span>는 `number`, `string`, `boolean`, `null`, `undefined` 와 같은 <span style = "color:red; font-weight: bold">단일 데이터 그 자체의 종류</span>를 뜻한다.
+* 반면, <span style = "font-weight: bold">Data Structures</span>는 structure 라는 말 그대로 데이터들을 <span style = "color: red; font-weight: bold">묶어놓을 수 있는 구조</span>를 뜻한다. 쉽게 이야기해 서로 연관이 있는 데이터를 collection으로 모아놓는 것이다. 위의 `list`, `tuple`, `set`, `dictionary`와 같은 것들이 여기 속한다.
