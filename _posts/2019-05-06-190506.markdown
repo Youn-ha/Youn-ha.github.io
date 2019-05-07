@@ -1,0 +1,246 @@
+---
+layout: post
+title: "How to use getCurrentPosition method that Geolocation API serves? ➊"
+date: 2019-05-06
+categories: jeckll
+---
+
+개발을 하다 보면 사용자의 승인 아래 사용자의 위치를 확인할 수 있는 기능을 만들어야 할 때가 많다. <span style = "color: #04a895; font-weight: bold">REACT</span> 에서 어떻게 구현할 수 있을까??
+해당 포스팅은 <span style = "color: #03a895; font-weight: bold">REACT</span>로 해당 기능을 구현한다는 가정 하에 진행되는 포스팅이라는 점을 유념해주셨으면 한다!
+또, <span style = "color : #03a895; font-weight: bold">REACT lifecyle</span> 에 대한 이해가 있어야 이해가 가능하다. 해당 포스팅은 <a>여기!</a>
+
+우리 팀 백엔드에서는 사용자의 위도. 경도를 request로 받아서 날씨 정보를 리턴하는 API를 만들어주셨기 때문에, 사용자의 위도와 경도를 받아올 방법을 찾아보자.
+
+<img src = "/img/line.png" width = "800px">
+
+<p style = "color: #03a895; font-weight: bold; font-size: 24px; font-style: italic">사용자의 현재 위치 확인 방법</p>
+
+사용자의 현재 위치를 받아오는 함수를 우리가 직접 개발할 필요는 없다!! 다행히도, <span style = "color: #03a895; font-weight: bold">Geolocation API</span>가 사용자 위치를 확인하는 간단한 '원샷' 메서드인 `getCurrentPosition()`을 제공한다. 이 메서드를 호출하면, 사용자의 현재 위치를 <span style = "color: #03a895; font-weight: bold">위도.경도</span>로 보고해준다!
+
+
+뭐야, 그러면 그냥 그 함수 긁어다 쓰면 해결되는거 아닌가??? 그럼 오늘 포스팅은 끝인가??!!??!?!?!?
+
+<span style = "color: red">..... 당연히 아니다...</span> 일단 코드를 들여다보자.
+
+**먼저 HTML 코드**
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <p id = "startLat">위도</p>
+    <p id = "startLon">경도</p>
+  </body>
+</html>
+```
+
+**다음은 JS 코드**
+
+```javascript
+window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+```
+
+
+**HTML**에 `p`태그를 이용해 **위도**, **경도**라고 적은 부분을 `innerHTML`을 통해 실제 위도값과 경도값으로 바꿔주는 코드이다. 근데, 우리는 **HTML DOM** 이 아니라 <span style = "color: #03a895; font-weight: bold">REACT</span>을 사용할 거기 때문에 <span style = "color: #03a895; font-weight: bold">REACT</span>에 적합하게 만들어주어야 한다.
+
+
+<span style = "color: #03a895; font-weight: bold">(출처 :</span> [https://developers.google.com/web/fundamentals/native-hardware/user-location/](https://developers.google.com/web/fundamentals/native-hardware/user-location/)<span style = "color: #03a895; font-weight: bold">)</span>
+
+
+<img src = "/img/line.png" width = "800px">
+
+위의 코드를 하나하나 뜯어보면, 일단 첫 번째로 눈에 띄는 것은, JS 코드에서 우리가 <span style = "color: #03a895; font-weight: bold">navigator, geolocation, getCurrentPosition</span>을 선언해 준 적도 없는데 사용할 수 있다는 사실이다. 왜일까??
+
+윈도우의 console 창에 <span style = "color: #03a895; font-weight: bold">navigator</span> 를 쳐보면 다음과 같은 게 찍힌다.
+
+
+```javascript
+Navigator {vendorSub: "", productSub: "20030107", vendor: "Google Inc.", maxTouchPoints: 0, hardwareConcurrency: 8, …}
+appCodeName: "Mozilla"
+appName: "Netscape"
+appVersion: "5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"
+bluetooth: Bluetooth {}
+clipboard: Clipboard {}
+connection: NetworkInformation {onchange: null, effectiveType: "4g", rtt: 150, downlink: 10, saveData: false}
+cookieEnabled: true
+credentials: CredentialsContainer {}
+deviceMemory: 8
+doNotTrack: null
+geolocation: Geolocation {}
+hardwareConcurrency: 8
+keyboard: Keyboard {}
+language: "ko-KR"
+languages: (4) ["ko-KR", "ko", "en-US", "en"]
+locks: LockManager {}
+maxTouchPoints: 0
+mediaCapabilities: MediaCapabilities {}
+mediaDevices: MediaDevices {ondevicechange: null}
+mediaSession: MediaSession {metadata: null, playbackState: "none"}
+mimeTypes: MimeTypeArray {0: MimeType, 1: MimeType, 2: MimeType, 3: MimeType, application/pdf: MimeType, application/x-google-chrome-pdf: MimeType, application/x-nacl: MimeType, application/x-pnacl: MimeType, length: 4}
+onLine: true
+permissions: Permissions {}
+platform: "MacIntel"
+plugins: PluginArray {0: Plugin, 1: Plugin, 2: Plugin, Chrome PDF Plugin: Plugin, Chrome PDF Viewer: Plugin, Native Client: Plugin, length: 3}
+presentation: Presentation {receiver: null, defaultRequest: null}
+product: "Gecko"
+productSub: "20030107"
+serviceWorker: ServiceWorkerContainer {ready: Promise, controller: null, oncontrollerchange: null, onmessage: null}
+storage: StorageManager {}
+usb: USB {onconnect: null, ondisconnect: null}
+userActivation: UserActivation {hasBeenActive: true, isActive: false}
+userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"
+vendor: "Google Inc."
+vendorSub: ""
+webkitPersistentStorage: DeprecatedStorageQuota {}
+webkitTemporaryStorage: DeprecatedStorageQuota {}
+__proto__: Navigator
+```
+
+12번째 줄을 보면 <span style = "color: #03a895; font-weight: bold">geolocation</span>이 있다!
+
+그리고, <span style = "color: #03a895; font-weight: bold">geolocation</span>을 클릭해보면 또 그 안에 <span style = "color: #03a895; font-weight: bold">getCurrentPosition</span> 메서드가 들어있다!
+
+```
+geolocation: Geolocation
+__proto__: Geolocation
+clearWatch: ƒ clearWatch()
+getCurrentPosition: ƒ getCurrentPosition()
+watchPosition: ƒ watchPosition()
+constructor: ƒ Geolocation()
+Symbol(Symbol.toStringTag): "Geolocation"
+__proto__: Object
+```
+
+이렇게!
+
+그 말인즉슨, <span style = "color: #03a895; font-weight: bold">navigator</span>은 윈도우에서 제공하는 함수라 이렇게 선언하지 않고도 쓸 수 있다는 뜻이다!
+
+<img src = "/img/line.png" width= "800px">
+
+다시 JS 코드를 들여다보자.
+
+```javascript
+window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+```
+
+여기서 `window.onload = function()`는 윈도우 창이 실행될 때 해당 함수를 실행한다는 뜻이다.
+
+그런데 우리는 지금 <span style = "color: #03a895; font-weight: bold">REACT</span>에서 작업을 하고 있고, <span style = "color: #03a895; font-weight: bold">REACT</span>는 윈도우가 실행되는 순간부터 **Lifecyle** (실행 주기)이 시작되기 때문에, 이미 윈도우 창은 실행되고 있는 상태이다. 따라서 해당 코드는 필요가 없다! 지워주자.
+
+<img src = "/img/line.png" width="800px">
+
+다시 코드를 들여다보자.
+
+```javascript
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+```
+
+8번째 줄을 보면, `navigator.geolocation.getCurrentPosition(geoSuccess);`라고 되어있다. 그런데 위를 보면, `geoSuccess()`함수가 정의되어 있다. 그렇다면,
+
+```javascript
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+```
+
+이 부분을
+
+```javascript
+navigator.geolocation.getCurrentPosition(geoSuccess);
+```
+이 곳의 `geoSuccess`에 대체해서 넣을 수 있을 것이다. 함수를 조금 더 익숙하고 보기 쉬운 형태로 바꿔보자!
+
+```javascript
+var startPos;
+navigator.geolocation.getCurrentPosition(function(position) {
+  startPos = position;
+  document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+  document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+);
+```
+
+이렇게 바꾸어보았다!
+
+
+<img src = "/img/line.png" width= "800px">
+
+
+여태 한 일은, 일단 이 함수를 보기 쉽게 정리해본 것이다. 그렇다면 생각해보자. `getCurrentPosition` 메서드가 사용자의 현재 위치를 **위도.경도**로 받아오는 메서드라고 하는데, 그 정보는 과연 어디에 들어있을까? 어디에 숨어있는지 `console.log`로 찍어볼 필요성을 느낀다!!!
+
+```javascript
+var startPos;
+navigator.geolocation.getCurrentPosition(function(position) {
+  console.log(position);
+  };
+);
+```
+일단 리액트 환경에 맞지 않는 **HTML DOM** 이 있는 줄은 없애버리고, `position`에 콘솔을 찍어보았다.
+
+```javascript
+Position {coords: Coordinates, timestamp: 1557137075925}
+coords: Coordinates {latitude: 37.5063245, longitude: 127.05373929999998, altitude: null, accuracy: 55, altitudeAccuracy: null, …}
+timestamp: 1557137075925
+__proto__: Position
+```
+
+짠!! 위도와 경도가 찍혔다. **latitude**는 <span style = "color: #03a895">37.5063245</span>, **longitude**는 <span style = "color: #03a895">127.05373929999998</span>이 나왔다! 이렇게 사용자의 위치정보, 즉 위도/경도가 `position`으로 들어온다는 사실이 밝혀졌다.
+
+<img src = "/img/line.png" width = "800px">
+
+이제부터 정말 중요한 파트다! `position`은 현재 function 안에 들어가있다.
+
+```javascript
+var startPos;
+navigator.geolocation.getCurrentPosition(function(position) {
+  startPos = position;
+  document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+  document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+);
+```
+
+이렇게!
+
+그런데 기존의 코드와, `Position` 콘솔 찍어본 것을 보면, `position.coords.latitude`와 `position.coords.longitude`에 우리가 필요로 하는 위.경도 정보가 각각 들어가 있는 것으로 보인다. 함수 내부에서 사용되는 인자나 변수 등은 함수 바깥에서 사용할 수 없기 때문에, `position`을 바깥으로 꺼내와서 사용할 방법을 강구해야 한다.
+
+방법은 간단하다! 위의 코드는 이미 완성된 코드이기 때문에 힌트가 다 나와있다. 바로 바깥에서 임의의 변수 `startPos`를 선언하고, 함수 내부에서 `startPos =  position`이라고 적어주면 된다. `startPos`는 함수 바깥에서도 사용할 수 있는 변수이기 때문에, `position`을 함수 바깥에서 쓸 수 있도록 해준다.
+
+```
+startPos.coords.latitude;
+startPos.coords.longitude;
+```
+
+
+<p style = "color: #03a895; font-weight: bold">다음 편에서 계속!!</p>
